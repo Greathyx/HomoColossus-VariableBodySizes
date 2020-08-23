@@ -1,5 +1,5 @@
-# Three.js boilerplate
-This is a simple three.js boilerplate for new projects, feel free to contribute!
+# Variable Body Sizes
+This is a sub-project from Homo Colossus@2020 Expo.
 
 ### Setup
 Run the setup script to make the repository your own!
