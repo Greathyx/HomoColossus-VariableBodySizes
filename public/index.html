@@ -1,16 +1,137 @@
-<html>
-	<head>
-		<title>Three.js Boilerplate</title>
-		<style>
-			body { margin: 0; }
-			canvas { width: 100%; height: 100% }
-		</style>
-	</head>
-	<body>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
-		<script src="/assets/OrbitControls.js"></script>
-		<script src="/assets/OBJLoader.js"></script>
-		<script src="/assets/MTLLoader.js"></script>
-		<script src="/scripts.js"></script>
-	</body>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Variable Body Sizes</title>
+
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="my-nav">
+    <a class="navbar-brand" href="#">Homo Colossus</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main id="main">
+    <div id="side_bar">
+        <div>
+            <label for="select1">Question 1. How many times do you fly in average every year?</label>
+            <select class="form-control" id="select1">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option>Less than 3 times</option>
+                <option>3 to 10 times</option>
+                <option>Over 10 times</option>
+            </select>
+
+            <label for="select1">Question 1. How many times do you fly in average every year?</label>
+            <select class="form-control" id="select2">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option>Less than 3 times</option>
+                <option>3 to 10 times</option>
+                <option>Over 10 times</option>
+            </select>
+        </div>
+        <div id="buttons">
+            <button type="button" class="btn btn-info"
+                    style="margin-right: 10px" onclick="submit()">
+                Submit
+            </button>
+            <button type="button" class="btn btn-warning"
+                    onclick="reset()">
+                Reset
+            </button>
+        </div>
+    </div>
+    <div id="container" style="width: 100%;">
+        <p class="h1" id="my-title">
+            Your homo colossus figure is:
+        </p>
+        <div id="human_unknown_div" style="margin-top: 60px">
+            <img src="/assets/human_unknown.png" alt="human_unknown.png"
+                 class="mx-auto d-block" style="width: 30%; height: auto;">
+        </div>
+    </div>
+</main>
+
+<style>
+    #main {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #side_bar {
+        background-color: #303030;
+        color: white;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        padding: 16px 24px;
+    }
+
+    #buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #my-title {
+        background-color: black;
+        color: white;
+        margin-bottom: 0;
+        line-height: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+</style>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
+<script src="/scripts/inflate.min.js"></script>
+<script src="/scripts/OrbitControls.js"></script>
+<script src="/scripts/OBJLoader.js"></script>
+<script src="/scripts/MTLLoader.js"></script>
+<script src="/scripts/FBXLoader.js"></script>
+<script src="/script.js"></script>
+</body>
 </html>

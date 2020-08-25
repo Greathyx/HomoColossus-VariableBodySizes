@@ -1,5 +1,5 @@
 {
-  "name": "three-js-boilerplate",
+  "name": "homo_colossus-variable_body_sizes",
   "version": "1.0.0",
   "description": "",
   "main": "scripts.js",
@@ -8,11 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github-learnthreejs:learnthreejs/three-js-boilerplate.git"
+    "url": "https://github.com/Greathyx/HomoColossus-VariableBodySizes.git"
   },
-  "author": "",
+  "author": "Yuxuan Huang",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.5.2",
     "express": "^4.15.3"
   }
 }
