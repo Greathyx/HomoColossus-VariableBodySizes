@@ -27,10 +27,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/about">About</a>
             </li>
         </ul>
     </div>
@@ -38,26 +38,105 @@
 
 <main id="main">
     <div id="side_bar">
-        <div>
-            <label for="select1">Question 1. How many times do you fly in average every year?</label>
+        <div id="questions">
+            <!-- Question 1 -->
+            <!-- Head -->
+            <label for="select1">Question 1. How important do you think sustainability is?</label>
             <select class="form-control" id="select1">
                 <option value="none" selected disabled hidden>- Please select an option -</option>
-                <option>Less than 3 times</option>
-                <option>3 to 10 times</option>
-                <option>Over 10 times</option>
+                <option value="1">Very important</option>
+                <option value="2">Neutral</option>
+                <option value="3">Not important</option>
             </select>
 
-            <label for="select1">Question 1. How many times do you fly in average every year?</label>
+            <!-- Question 2 -->
+            <!-- Arms -->
+            <label style="margin-top: 20px" for="select2">
+                Question 2. How many times <span style="font-weight: bold">per week</span>
+                do you buy plastic shopping bag on average?</label>
             <select class="form-control" id="select2">
                 <option value="none" selected disabled hidden>- Please select an option -</option>
-                <option>Less than 3 times</option>
-                <option>3 to 10 times</option>
-                <option>Over 10 times</option>
+                <option value="1">Less than 3 times</option>
+                <option value="2">3 to 10 times</option>
+                <option value="3">Over 10 times</option>
+            </select>
+
+            <!-- Question 3 -->
+            <!-- Arms -->
+            <label style="margin-top: 20px" for="select3">
+                Question 3. How many times <span style="font-weight: bold">per week</span>
+                do you throw expired food away on average?</label>
+            <select class="form-control" id="select3">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option value="1">Less than 3 times</option>
+                <option value="2">3 to 7 times</option>
+                <option value="3">Over 7 times</option>
+            </select>
+
+            <!-- Question 4 -->
+            <!-- Arms -->
+            <label style="margin-top: 20px" for="select4">
+                Question 4. How many pieces of your things (furniture/clothing etc.)
+                <span style="font-weight: bold">per year</span>
+                do you throw away on average?</label>
+            <select class="form-control" id="select4">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option value="1">Less than 5 pieces</option>
+                <option value="2">5 to 20 pieces</option>
+                <option value="3">Over 20 pieces</option>
+            </select>
+
+            <!-- Question 5 -->
+            <!-- Arms -->
+            <label style="margin-top: 20px" for="select5">Question 5. How many days do you use the
+                air conditioner on average
+                <span style="font-weight: bold">per year</span>?</label>
+            <select class="form-control" id="select5">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option value="1">Less than one month</option>
+                <option value="2">One to two months</option>
+                <option value="3">Over two months</option>
+            </select>
+
+            <!-- Question 6 -->
+            <!-- Belly -->
+            <label style="margin-top: 20px" for="select6">
+                Question 6. How many kilos
+                <span style="font-weight: bold">per week</span>
+                do you eat meat on average?</label>
+            <select class="form-control" id="select6">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option value="1">Less than 2 kilos</option>
+                <option value="2">2 to 5 kilos</option>
+                <option value="3">Over 5 kilos</option>
+            </select>
+
+            <!-- Question 7 -->
+            <!-- Legs -->
+            <label style="margin-top: 20px" for="select7">Question 7. How many hours do you drive on average
+                <span style="font-weight: bold">per week</span>?</label>
+            <select class="form-control" id="select7">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option value="1">Less than 5 hours</option>
+                <option value="2">5 to 15 hours</option>
+                <option value="3">Over 15 hours</option>
+            </select>
+
+            <!-- Question 8 -->
+            <!-- Legs -->
+            <label style="margin-top: 20px" for="select8">Question 8. How many times do you travel by air on average
+                <span style="font-weight: bold">per year</span>?</label>
+            <select class="form-control" id="select8">
+                <option value="none" selected disabled hidden>- Please select an option -</option>
+                <option value="1">Less than 3 times</option>
+                <option value="2">3 to 12 times</option>
+                <option value="3">Over 12 times</option>
             </select>
         </div>
+
         <div id="buttons">
             <button type="button" class="btn btn-info"
-                    style="margin-right: 10px" onclick="submit()">
+                    style="margin-right: 15px" onclick="submit()">
                 Submit
             </button>
             <button type="button" class="btn btn-warning"
@@ -68,8 +147,9 @@
     </div>
     <div id="container" style="width: 100%;">
         <p class="h1" id="my-title">
-            Your homo colossus figure is:
+            Your homo colossus figure is: <span id="HC_name"></span>
         </p>
+        <p class="h6" id="my-content"></p>
         <div id="human_unknown_div" style="margin-top: 60px">
             <img src="/assets/human_unknown.png" alt="human_unknown.png"
                  class="mx-auto d-block" style="width: 30%; height: auto;">
@@ -89,13 +169,25 @@
         width: 400px;
         display: flex;
         flex-direction: column;
-        padding: 16px 24px;
+    }
+
+    #questions {
+        display: flex;
+        flex-direction: column;
+        padding: 16px 24px 70px 24px;
+        overflow: scroll;
     }
 
     #buttons {
         margin-top: 20px;
         display: flex;
         justify-content: flex-end;
+        position: absolute;
+        bottom: 0;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        background-color: #303030;
+        width: 289px
     }
 
     #container {
@@ -108,6 +200,16 @@
         color: white;
         margin-bottom: 0;
         line-height: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    #my-content {
+        height: 20px;
+        margin: 0 50px;
+        background-color: black;
+        color: white;
         display: flex;
         justify-content: center;
         align-items: flex-end;
