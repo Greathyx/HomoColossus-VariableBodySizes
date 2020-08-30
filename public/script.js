@@ -119,25 +119,31 @@ let onError = function (xhr) {
     console.error(xhr);
 };
 
-// Animation
-let animate = function () {
-    requestAnimationFrame(animate);
-    let delta = clock.getDelta();
-    if (mixers.length > 0) {
-        for (var i = 0; i < mixers.length; i++) {
-            mixers[i].update(delta);
-        }
-    }
-    controls.update();
-    renderer.render(scene, camera);
-};
-
-let mixers = new Array();
+// let mixers = new Array();
+let mixer;
 let clock = new THREE.Clock();
 
 function showModel(hc_model) {
+    scene = new THREE.Scene();
+    scene.add(hemiLight);
+    scene.add(dirLight);
+
+    // Animation
+    let animate = function () {
+        requestAnimationFrame(animate);
+        let delta = clock.getDelta();
+        // if (mixers.length > 0) {
+        //     for (var i = 0; i < mixers.length; i++) {
+        //         mixers[i].update(delta);
+        //     }
+        // }
+        if (mixer !== undefined)
+            mixer.update(delta);
+        controls.update();
+        renderer.render(scene, camera);
+    };
+
     container.appendChild(renderer.domElement);
-    HC_name_span.innerHTML = "Kitty";
 
     // let mtlLoader = new THREE.MTLLoader();
     // mtlLoader.setTexturePath('/assets/unused');
@@ -160,19 +166,26 @@ function showModel(hc_model) {
     let fbxLoader = new THREE.FBXLoader(manager);
     fbxLoader.load(hc_model.src, function (object) {
 
-        object.mixer = new THREE.AnimationMixer(object);
-        mixers.push(object.mixer);
-        let action = object.mixer.clipAction(object.animations[0]);
+        // object.mixer = new THREE.AnimationMixer(object);
+        // mixers.push(object.mixer);
+        // let action = object.mixer.clipAction(object.animations[0]);
+
+        mixer = new THREE.AnimationMixer(object);
+        let action = mixer.clipAction(object.animations[0]);
         action.play();
 
-        object.position.y -= 60;
+        if (hc_model === HC_model.big_arms)
+            object.position.y -= 90;
+        else
+            object.position.y -= 60;
+
         // object.scale.multiplyScalar(0.8);
         scene.add(object);
 
     }, onProgress, onError);
 
     contentLabel.innerHTML = hc_model.description;
-    HC_name_span.innerHTML = hc_model.name;
+    HC_name_span.innerHTML = " " + hc_model.name;
 
     animate();
 }
@@ -184,13 +197,13 @@ function showModel(hc_model) {
  *
  */
 function submit() {
-    // let selects = document.getElementsByClassName("form-control");
-    // for (let i = 0; i < selects.length; i++) {
-    //     if (selects[i].value === "none") {
-    //         alert("Please select the answer for Question " + (i + 1) + "!");
-    //         return
-    //     }
-    // }
+    let selects = document.getElementsByClassName("form-control");
+    for (let i = 0; i < selects.length; i++) {
+        if (selects[i].value === "none") {
+            alert("Please select the answer for Question " + (i + 1) + "!");
+            return
+        }
+    }
 
     let select1 = document.getElementById("select1");
     let select2 = document.getElementById("select2");
@@ -286,5 +299,4 @@ function reset() {
 
     HC_name_span.innerHTML = "";
     contentLabel.innerHTML = "";
-
 }
