@@ -1,7 +1,7 @@
 # Variable Body Sizes
 This is a sub-project from Homo Colossus@2020 Expo.
 
-### Setup
+## Setup
 Run the setup script to make the repository your own!
 
 ```bash
@@ -16,3 +16,6 @@ $ npm run start
 ```
 
 Open http://localhost:8080 to view your project.
+
+## Live Website
+Please visit: http://variable-body-sizes.herokuapp.com/

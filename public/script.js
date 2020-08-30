@@ -108,10 +108,17 @@ manager.onProgress = function (item, loaded, total) {
     console.log(item, loaded, total);
 };
 
+let description;
+
 let onProgress = function (xhr) {
     if (xhr.lengthComputable) {
-        var percentComplete = xhr.loaded / xhr.total * 100;
-        console.log(Math.round(percentComplete, 2) + '% downloaded');
+        let percentComplete = xhr.loaded / xhr.total * 100;
+        if (percentComplete === 100)
+            contentLabel.innerHTML = description;
+        else
+            contentLabel.innerHTML = 'Loading: ' + Math.round(percentComplete, 2) + '%';
+
+        // console.log(Math.round(percentComplete, 2) + '% downloaded');
     }
 };
 
@@ -124,6 +131,8 @@ let mixer;
 let clock = new THREE.Clock();
 
 function showModel(hc_model) {
+    description = hc_model.description;
+
     scene = new THREE.Scene();
     scene.add(hemiLight);
     scene.add(dirLight);
@@ -176,16 +185,19 @@ function showModel(hc_model) {
 
         if (hc_model === HC_model.big_arms)
             object.position.y -= 90;
+        else if (hc_model === HC_model.big_belly) {
+            object.scale.multiplyScalar(0.8);
+            object.position.y -= 70;
+        }
         else
             object.position.y -= 60;
 
-        // object.scale.multiplyScalar(0.8);
         scene.add(object);
 
     }, onProgress, onError);
 
-    contentLabel.innerHTML = hc_model.description;
-    HC_name_span.innerHTML = " " + hc_model.name;
+    // contentLabel.innerHTML = hc_model.description;
+    HC_name_span.innerHTML = hc_model.name;
 
     animate();
 }
