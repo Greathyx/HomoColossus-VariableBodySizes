@@ -1,6 +1,6 @@
 HC_model = {
     normal: {
-        name: 'Ella',
+        name: 'Peter',
         src: './assets/normal.fbx',
         description: 'Good! Your energy consumption is on average, thus your Homo Colossus ' +
             'is in a standard shape. Keep on!'
@@ -155,15 +155,15 @@ function showModel(hc_model) {
     container.appendChild(renderer.domElement);
 
     // let mtlLoader = new THREE.MTLLoader();
-    // mtlLoader.setTexturePath('/assets/unused');
-    // mtlLoader.setPath('/assets/unused');
+    // mtlLoader.setTexturePath('/assets/unused/');
+    // mtlLoader.setPath('/assets/unused/');
     // mtlLoader.load('r2-d2.mtl', function (materials) {
     //
     //     materials.preload();
     //
     //     let objLoader = new THREE.OBJLoader();
     //     objLoader.setMaterials(materials);
-    //     objLoader.setPath('/assets/unused');
+    //     objLoader.setPath('/assets/unused/');
     //     objLoader.load('r2-d2.obj', function (object) {
     //
     //         scene.add(object);
